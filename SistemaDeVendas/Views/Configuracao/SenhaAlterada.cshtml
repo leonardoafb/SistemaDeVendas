@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Senha Alterada</title>
+    <style>
+        .timer {
+            font-size: 4.5em;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 style="color: green;">Senha Alterada com Sucesso!</h2>
+        <button type="button" class="btn btn-primary" onclick="Voltar()">Retornar ao Login</button>
+        <div id="timer" class="timer">Redirecionando em 10 segundos...</div>
+    </div>
+
+    <script>
+        
+        var tempoRestante = 10; 
+        var timerElement = document.getElementById('timer');
+
+        function atualizarTemporizador() {
+
+            timerElement.textContent = `Redirecionando em ${tempoRestante} segundos...`;
+
+            tempoRestante--;
+
+
+            if (tempoRestante < 0) {
+                window.location.href = '../Home/Login';
+            }
+        }
+
+        var intervalo = setInterval(atualizarTemporizador, 1000);
+
+        function Voltar() {
+            clearInterval(intervalo); 
+            window.location.href = '../Home/Login';
+        }
+    </script>
+</body>
+</html>

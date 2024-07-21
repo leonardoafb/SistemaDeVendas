@@ -1,0 +1,41 @@
+﻿@using Microsoft.AspNetCore.Http
+@model PrimeiroCadastroModel
+
+<h2>Primeiro Cadastro</h2>
+@{
+    try
+    {
+        var erro = TempData["ErrorCadastro"].ToString();
+        <h5 class="text-danger">@erro</h5>
+    }
+    catch
+    {
+
+
+    }
+}
+<form asp-controller="PrimeiroCadastro" asp-action="Cadastro">
+    
+    <div class="form-group">
+        <label>Nome</label>
+        <input asp-for="Nome" type="text" class="form-control" value="@try {@ViewBag.PrimeiroCadastro.Nome} catch { }" />
+        <span asp-validation-for="Nome" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label>EMAIL</label>
+        <input asp-for="Email" type="text" class="form-control" value="@try {@ViewBag.PrimeiroCadastro.Email} catch { }" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+     @using Microsoft.AspNetCore.Http
+    @inject IHttpContextAccessor HttpContextAccessor
+
+    <button type="submit" class="btn btn-block btn-success" onclick="Cadastrar()">Registrar</button>
+</form>
+
+<script>
+    function Cadastrar() {
+        window.location.href = "../Home/Index";
+    }
+</script>
+
+
